@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chemistry Lab Chemical Catalogue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12263a;--teal:#1f7a8c;--teal-d:#165d6b;--bg:#f2f6f8;--card:#fff;--line:#d8e2e8;--mut:#5a6b78;--amber:#e8a33d;--red:#c0392b;--grn:#2e8b57;
+--f1:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;--f2:'Source Sans 3','Segoe UI',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--f2);background:var(--bg);color:var(--ink);line-height:1.6;font-size:17px}
+h1,h2,h3{font-family:var(--f1);line-height:1.15}
+a{color:var(--teal)}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+header{position:sticky;top:0;z-index:20;background:var(--ink);color:#fff;display:flex;align-items:center;gap:1.5rem;padding:.7rem 1.5rem}
+.brand{font-family:var(--f1);font-weight:800;font-size:1.25rem;cursor:pointer;display:flex;gap:.5rem;align-items:center}
+nav{display:flex;gap:1.2rem;margin-left:1rem;flex:1}
+nav button,.linkbtn{background:none;border:0;color:#cfe3ea;font:inherit;cursor:pointer;padding:.3rem 0}
+nav button:hover,nav button.on{color:#fff;box-shadow:0 2px 0 var(--amber)}
+.btn{background:var(--teal);color:#fff;border:0;border-radius:8px;padding:.6rem 1.2rem;font:600 1rem var(--f2);cursor:pointer}
+.btn:hover{background:var(--teal-d)}
+.btn.alt{background:var(--amber);color:var(--ink)}
+.btn.ghost{background:transparent;border:1.5px solid var(--teal);color:var(--teal)}
+.btn.sm{padding:.3rem .7rem;font-size:.9rem}
+.btn.del{background:#fff;color:var(--red);border:1.5px solid var(--red)}
+.profile{position:relative}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--amber);color:var(--ink);border:0;font:800 1rem var(--f1);cursor:pointer}
+.menu{position:absolute;right:0;top:48px;background:#fff;color:var(--ink);border-radius:10px;box-shadow:0 8px 30px #0003;min-width:230px;padding:.5rem;display:none}
+.menu.open{display:block}
+.menu small{display:block;padding:.4rem .7rem;color:var(--mut)}
+.menu button{display:block;width:100%;text-align:left;background:none;border:0;padding:.55rem .7rem;font:inherit;border-radius:6px;cursor:pointer}
+.menu button:hover{background:var(--bg)}
+main{min-height:70vh}
+.wrap{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+.hero{background:var(--ink);color:#fff;padding:4.5rem 0 0}
+.hero h1{font-size:clamp(2.2rem,5.5vw,4rem);font-weight:800;max-width:15ch}
+.hero p{max-width:52ch;margin:1.2rem 0 1.8rem;color:#cfe3ea;font-size:1.15rem}
+.ph{display:flex;margin-top:3.5rem;height:46px;font:600 .8rem var(--f1);color:#fff}
+.ph span{flex:1;display:flex;align-items:flex-end;padding:0 0 4px 6px}
+section{padding:3.5rem 0}
+section h2{font-size:2rem;margin-bottom:.4rem}
+.sub{color:var(--mut);max-width:62ch;margin-bottom:1.8rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.1rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.2rem}
+.card h3{font-size:1.15rem;margin-bottom:.3rem}
+.hz{display:flex;gap:1rem;align-items:flex-start}
+.dia{flex:none;width:54px;height:54px;transform:rotate(45deg);border:4px solid var(--red);background:#fff;margin:9px;display:grid;place-items:center}
+.dia i{transform:rotate(-45deg);font-style:normal;font-size:1.5rem}
+.sop{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--amber);border-radius:10px;margin-bottom:.7rem}
+.sop summary{cursor:pointer;padding:.9rem 1.1rem;font:700 1.05rem var(--f1)}
+.sop div{padding:0 1.1rem 1rem}
+.sop ul{padding-left:1.2rem}
+.band{background:#e6eef2}
+.pagehead{padding:2.5rem 0 1rem}
+.pagehead h1{font-size:2.4rem}
+.tools{display:flex;flex-wrap:wrap;gap:.7rem;margin:1rem 0}
+input,select,textarea{font:inherit;padding:.6rem .8rem;border:1.5px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);width:100%}
+.tools input{flex:1;min-width:220px;width:auto}.tools select{width:auto}
+.tw{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:860px}
+th{background:var(--ink);color:#fff;text-align:left;padding:.75rem 1rem;font:600 .95rem var(--f1)}
+td{padding:.7rem 1rem;border-top:1px solid var(--line);vertical-align:middle}
+tr:hover td{background:#f7fafb}
+.chip{display:inline-block;border-radius:99px;padding:.1rem .65rem;font-size:.85rem;font-weight:600}
+.in{background:#dff3e7;color:#1c6b3f}.low{background:#fdf0d2;color:#8a5a00}.out{background:#f9dcd8;color:#9b2a1d}
+.hb{display:inline-block;background:#fdf0d2;border:1px solid var(--amber);border-radius:6px;padding:0 .4rem;margin:0 .25rem .25rem 0;font-size:.85rem}
+.none{color:var(--mut)}
+.formula{font-family:var(--f1);font-weight:500}
+.addbox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:1.2rem;margin:1rem 0}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem}
+label{font-weight:600;font-size:.9rem;display:block;margin-bottom:.2rem}
+.checks{display:flex;flex-wrap:wrap;gap:.4rem 1rem;margin:.8rem 0}
+.checks label{font-weight:400;display:flex;gap:.3rem;align-items:center}.checks input{width:auto}
+.loginwrap{display:grid;place-items:center;padding:4rem 1rem}
+.loginbox{background:#fff;border:1px solid var(--line);border-radius:16px;padding:2.2rem;width:min(430px,100%);box-shadow:0 10px 40px #12263a1a}
+.loginbox h1{font-size:2rem;margin-bottom:.4rem}
+.loginbox label{margin-top:1rem}
+.err{color:var(--red);min-height:1.4rem;margin-top:.6rem;font-size:.95rem}
+dialog{border:0;border-radius:14px;padding:1.5rem;width:min(520px,94vw);box-shadow:0 20px 60px #0005}
+dialog::backdrop{background:#12263a99}
+.urow{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-top:1px solid var(--line)}
+footer{background:var(--ink);color:#9db4c0;text-align:center;padding:1.6rem 1rem;font-size:.9rem}
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.7rem 1.2rem;border-radius:8px;display:none;z-index:50}
+@media(max-width:700px){header{flex-wrap:wrap;gap:.6rem}nav{order:3;width:100%;margin:0}}
+@media(prefers-reduced-motion:no-preference){.ph span{animation:rise .8s ease both}.ph span:nth-child(n){animation-delay:calc(var(--i)*40ms)}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand" onclick="go('home')">⚗ ChemCatalogue</div>
+  <nav>
+    <button data-r="home" onclick="go('home')">Home</button>
+    <button data-r="catalogue" onclick="go('catalogue')">Catalogue</button>
+    <button onclick="go('home','sops')">Safety</button>
+    <button onclick="go('home','about')">About</button>
+  </nav>
+  <div id="auth"></div>
+</header>
+<main id="view"></main>
+<footer>Chemistry Department · Laboratory Chemical Catalogue · <span id="yr"></span></footer>
+<div class="toast" id="toast"></div>
+<dialog id="dlg"></dialog>
+
+<script type="module">
+import {initializeApp,getApps} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getAuth,signInWithEmailAndPassword,createUserWithEmailAndPassword,signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {getFirestore,collection,doc,addDoc,setDoc,getDoc,updateDoc,deleteDoc,onSnapshot,query,writeBatch} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+/* ====== EDIT THESE: college details shown in the About section ====== */
+const COLLEGE = {
+  name: "Your College Name",
+  dept: "Department of Chemistry",
+  place: "City, Kerala, India",
+  text: "Write a short introduction to your college and the chemistry department here. Mention the M.Sc. and B.Sc. programmes, the laboratories, and who looks after the chemical store.",
+  contact: "chemistry@yourcollege.edu.in"
+};
+/* ====== PASTE YOUR FIREBASE SETTINGS HERE (see README, Section 7) ====== */
+const FIREBASE_CONFIG = {apiKey:"PASTE_HERE",authDomain:"PASTE_HERE",projectId:"PASTE_HERE",appId:"PASTE_HERE"};
+const ADMIN_USERNAME = "Admit@Chem";
+const toEmail=u=>u.trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")+"@chemcat.app";
+const ADMIN_EMAIL = toEmail(ADMIN_USERNAME);
+
+const HAZ = {
+  flame:{i:"🔥",n:"Flammable",d:"Catches fire easily: solvents, some gases and solids. Keep away from flames and sparks."},
+  oxid:{i:"⭕",n:"Oxidising",d:"Feeds fires and can ignite combustibles. Store away from organic matter and fuels."},
+  corr:{i:"🧪",n:"Corrosive",d:"Burns skin and eyes, attacks metals. Wear gloves, goggles and an apron."},
+  toxic:{i:"☠️",n:"Acutely toxic",d:"Can kill or seriously harm by swallowing, skin contact or inhalation, even in small amounts."},
+  harm:{i:"❗",n:"Harmful / irritant",d:"Irritates skin, eyes or lungs; harmful if swallowed. Avoid contact and inhalation."},
+  health:{i:"🫁",n:"Serious health hazard",d:"May cause cancer, genetic damage or organ damage after exposure."},
+  expl:{i:"💥",n:"Explosive",d:"May explode with heat, shock or friction. Handle in minimum quantities."},
+  gas:{i:"🫙",n:"Gas under pressure",d:"Cylinders may explode if heated; some gases cause cold burns. Secure cylinders upright."},
+  env:{i:"🐟",n:"Environmental hazard",d:"Harmful to aquatic life. Never pour down the drain; use the labelled waste bottle."}
+};
+const SOPS = [
+ ["Concentrated acids (HCl, H₂SO₄, HNO₃)",["Wear splash goggles, nitrile gloves, lab coat and apron; work in a fume hood.","Always add acid to water, slowly. Never add water to acid.","Carry bottles with both hands or in a bottle carrier.","Spill: neutralise with sodium bicarbonate, wipe, rinse. Skin or eye contact: flush with running water for 15 minutes and call the faculty-in-charge."]],
+ ["Strong bases (NaOH, KOH, NH₄OH)",["Dissolving NaOH gives off heat. Add pellets slowly to water and stir.","Keep ammonia solutions in the hood; the vapour irritates the lungs.","Spill: dilute with water, neutralise with dilute acetic acid, mop up."]],
+ ["Flammable solvents (acetone, ethanol, benzene, ether)",["No flames, hot plates or sparks nearby. Use a water bath or heating mantle.","Keep containers closed and quantities small. Store in a ventilated flammables cabinet.","Fire: use a CO₂ or dry-powder extinguisher, not water. Benzene is a carcinogen: use only in a hood and only when no substitute exists."]],
+ ["Oxidisers (KMnO₄, K₂Cr₂O₇, HNO₃)",["Store separately from organic chemicals, acids and reducing agents.","Never grind oxidisers with organic material or sulphur.","Chromium(VI) is carcinogenic. Collect all residues in the labelled heavy-metal waste bottle."]],
+ ["Toxic and heavy-metal compounds (Hg, Pb, Ba, As, Cd, cyanides)",["Handle with gloves in a hood. Never pipette by mouth.","Mercury spills: do not sweep. Use a mercury spill kit and report immediately.","Never mix cyanides with acid. Wash hands thoroughly after use.","Log every use in the register. Dispose only through the approved waste route."]]
+];
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fm=f=>esc(f).replace(/([A-Za-z\)])(\d+)/g,"$1<sub>$2</sub>");
+let chems=[],users=[],sess=null,unT=null;
+const fbOK=FIREBASE_CONFIG.apiKey!=="PASTE_HERE";
+function toast(m){const t=$("#toast");t.textContent=m;t.style.display="block";clearTimeout(t._h);t._h=setTimeout(()=>t.style.display="none",2600)}
+let auth,db;
+if(fbOK){
+ const app=initializeApp(FIREBASE_CONFIG);auth=getAuth(app);db=getFirestore(app);
+ onSnapshot(query(collection(db,"chemicals")),sn=>{chems=sn.docs.map(d=>({id:d.id,...d.data()}));if($("#rows"))renderList()},()=>toast("Could not load the catalogue. Check your internet connection."));
+ onAuthStateChanged(auth,async u=>{
+  if(unT){unT();unT=null}
+  sess=null;users=[];
+  if(u){
+   if(u.email===ADMIN_EMAIL){sess={user:"Administrator",admin:true};
+     unT=onSnapshot(collection(db,"teachers"),sn=>{users=sn.docs.map(d=>({id:d.id,...d.data()}));if($("#tl"))teacherList()})}
+   else{try{const t=await getDoc(doc(db,"teachers",u.email));if(t.exists())sess={user:t.data().name,admin:false}}catch(e){}
+     if(!sess){await signOut(auth);toast("This login does not have access.")}}
+  }
+  render();
+ });
+}else setTimeout(()=>toast("Firebase is not set up yet. See README Section 7."),600);
+$("#yr").textContent=new Date().getFullYear();
+
+function go(r,anchor){location.hash=r;render(anchor)}
+window.addEventListener("hashchange",()=>render());
+function renderAuth(){
+  const a=$("#auth");
+  if(!sess){a.innerHTML=`<button class="btn alt" onclick="go('login')">Login</button>`;return}
+  const ini=esc(sess.user[0].toUpperCase());
+  a.innerHTML=`<div class="profile"><button class="avatar" aria-label="Profile menu" onclick="$('.menu').classList.toggle('open')">${ini}</button>
+  <div class="menu"><small>Signed in as <b>${esc(sess.user)}</b><br>${sess.admin?"Administrator (HOD)":"Teacher"}</small>
+  ${sess.admin?`<button onclick="teachers()">👤 Manage teacher logins</button>`:""}
+  <button onclick="exportData()">⬇ Export catalogue (backup)</button>
+  <button onclick="document.getElementById('imp').click()">⬆ Import catalogue</button>
+  <button onclick="logout()">Sign out</button></div>
+  <input type="file" id="imp" accept=".json" hidden onchange="importData(this)"></div>`;
+}
+function render(anchor){
+  const r=(location.hash||"#home").slice(1);
+  document.querySelectorAll("nav button[data-r]").forEach(b=>b.classList.toggle("on",b.dataset.r===r));
+  renderAuth();
+  $("#view").innerHTML = r==="catalogue"?catalogue(): r==="login"?loginPage(): home();
+  if(r==="catalogue") renderList();
+  if(anchor){const e=document.getElementById(anchor);if(e)e.scrollIntoView({behavior:"smooth"})} else window.scrollTo(0,0);
+}
+
+function home(){
+  const cols=["#e8392b","#ef6a2a","#f2a22c","#e8d92f","#9bcf3a","#3fae4e","#1f9a8a","#2184c4","#3a5fc8","#5a49b8","#7a3fae","#8e3490","#a0306f","#b02c4d"];
+  return `
+  <div class="hero"><div class="wrap">
+    <h1>Every chemical in our labs, in one place.</h1>
+    <p>The M.Sc. and B.Sc. chemistry laboratories share this catalogue: what we hold, how much is left, and how to handle it safely.</p>
+    <button class="btn alt" onclick="go('catalogue')">Open the chemical catalogue</button>
+  </div>
+  <div class="ph" aria-hidden="true" style="margin-top:3.5rem">${cols.map((c,i)=>`<span style="background:${c};--i:${i}">${i+1}</span>`).join("")}</div></div>
+
+  <section><div class="wrap"><h2>About the chemicals</h2>
+  <p class="sub">The catalogue records each reagent's name, formula, hazards, stock status and the date it was added. Stock is shared across both labs.</p>
+  <div class="grid">
+   <div class="card"><h3>Acids and bases</h3><p>HCl, H₂SO₄, HNO₃, NaOH and ammonia for titrations, digestions and pH work. Most are corrosive.</p></div>
+   <div class="card"><h3>Salts and metal compounds</h3><p>Sulphates, nitrates, chlorides and dichromates for qualitative analysis, gravimetry and synthesis. Some are toxic or harm aquatic life.</p></div>
+   <div class="card"><h3>Organic solvents</h3><p>Acetone, ethanol, benzene and others for extraction, recrystallisation and chromatography. Most are flammable.</p></div>
+   <div class="card"><h3>Indicators and standards</h3><p>Primary standards and indicators for volumetric analysis. Usually low hazard, but keep them labelled and dated.</p></div>
+  </div></div></section>
+
+  <section class="band" id="sops"><div class="wrap"><h2>Standard operating procedures</h2>
+  <p class="sub">Read the relevant procedure before you open a bottle. If you are unsure, ask the faculty-in-charge first.</p>
+  ${SOPS.map(s=>`<details class="sop"><summary>${s[0]}</summary><div><ul>${s[1].map(x=>`<li>${x}</li>`).join("")}</ul></div></details>`).join("")}
+  <p style="margin-top:1rem"><b>Always:</b> goggles and lab coat on, long hair tied back, no food or drink, know where the eyewash, shower and extinguisher are.</p></div></section>
+
+  <section><div class="wrap"><h2>Hazard symbols and what they mean</h2>
+  <p class="sub">These are the GHS pictograms printed on reagent labels and shown beside chemicals in the catalogue.</p>
+  <div class="grid">${Object.values(HAZ).map(h=>`<div class="card hz"><div class="dia"><i>${h.i}</i></div><div><h3>${h.n}</h3><p>${h.d}</p></div></div>`).join("")}</div></div></section>
+
+  <section class="band" id="about"><div class="wrap"><h2>About ${esc(COLLEGE.name)}</h2>
+  <p class="sub" style="margin-bottom:.8rem">${esc(COLLEGE.dept)} · ${esc(COLLEGE.place)}</p>
+  <p style="max-width:68ch">${esc(COLLEGE.text)}</p>
+  <p style="margin-top:1rem">Contact: <a href="mailto:${esc(COLLEGE.contact)}">${esc(COLLEGE.contact)}</a></p></div></section>`;
+}
+
+function catalogue(){
+  const ed=!!sess;
+  return `<div class="wrap"><div class="pagehead"><h1>Chemical catalogue</h1>
+  <p class="sub" style="margin:.4rem 0 0">${ed?"You are signed in: you can add, update and delete chemicals.":"Browsing is open to everyone. Sign in to add or delete chemicals."}</p></div>
+  ${ed?`<details class="addbox"><summary style="cursor:pointer;font:700 1.05rem var(--f1)">+ Add a chemical</summary>
+   <div class="row" style="margin-top:1rem">
+    <div><label for="n">Name</label><input id="n"></div>
+    <div><label for="f">Formula (e.g. CuSO4·5H2O)</label><input id="f"></div>
+    <div><label for="l">Lab</label><select id="l"><option>B.Sc</option><option>M.Sc</option><option>M.Sc + B.Sc</option></select></div>
+    <div><label for="q">Quantity (e.g. 500 g)</label><input id="q"></div>
+    <div><label for="sh">Shelf number (e.g. A-3)</label><input id="sh"></div>
+    <div><label for="a">Availability</label><select id="a"><option value="in">In stock</option><option value="low">Low stock</option><option value="out">Out of stock</option></select></div>
+   </div>
+   <div class="checks">${Object.entries(HAZ).map(([k,h])=>`<label><input type="checkbox" value="${k}" class="hk"> ${h.i} ${h.n}</label>`).join("")}</div>
+   <button class="btn" onclick="addChem()">Add to catalogue</button></details>`:""}
+  <div class="tools"><input id="s" type="search" placeholder="Search by name, formula or hazard" oninput="renderList()" aria-label="Search chemicals">
+   <select id="lf" onchange="renderList()" aria-label="Filter by lab"><option value="">Both labs</option><option>B.Sc</option><option>M.Sc</option></select>
+   <select id="af" onchange="renderList()" aria-label="Filter by availability"><option value="">Any availability</option><option value="in">In stock</option><option value="low">Low stock</option><option value="out">Out of stock</option></select></div>
+  <p id="count" class="sub" style="margin-bottom:.6rem"></p>
+  <div class="tw"><table><thead><tr><th>Chemical</th><th>Formula</th><th>Lab</th><th>Shelf no.</th><th>Hazard warning</th><th>Availability</th><th>Date added</th>${ed?"<th></th>":""}</tr></thead><tbody id="rows"></tbody></table></div>
+  <div style="height:3rem"></div></div>`;
+}
+const AV={in:["In stock","in"],low:["Low stock","low"],out:["Out of stock","out"]};
+function renderList(){
+  const q=($("#s")?.value||"").toLowerCase(),lf=$("#lf")?.value||"",af=$("#af")?.value||"";
+  const rows=[...chems].sort((a,b)=>a.name.localeCompare(b.name)).filter(c=>
+    (!q||(c.name+" "+c.formula+" "+c.haz.map(h=>HAZ[h]?.n).join(" ")).toLowerCase().includes(q))&&(!lf||c.lab.includes(lf))&&(!af||c.avail===af));
+  $("#count").textContent=`${rows.length} of ${chems.length} chemicals`;
+  $("#rows").innerHTML=rows.length?rows.map(c=>`<tr>
+   <td><b>${esc(c.name)}</b></td><td class="formula">${fm(c.formula)}</td><td>${esc(c.lab)}</td><td>${c.shelf?esc(c.shelf):'<span class="none">Not set</span>'}</td>
+   <td>${c.haz.length?c.haz.map(h=>HAZ[h]?`<span class="hb" title="${esc(HAZ[h].d)}">${HAZ[h].i} ${HAZ[h].n}</span>`:"").join(""):'<span class="none">No major hazard</span>'}</td>
+   <td>${sess?`<select aria-label="Availability of ${esc(c.name)}" onchange="setAv('${c.id}',this.value)" style="width:auto;padding:.3rem">${Object.entries(AV).map(([k,v])=>`<option value="${k}" ${k===c.avail?"selected":""}>${v[0]}</option>`).join("")}</select>`:`<span class="chip ${AV[c.avail][1]}">${AV[c.avail][0]}</span>`}
+     <div class="none" style="font-size:.85rem">${esc(c.qty||"")}</div></td>
+   <td>${new Date(c.date).toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"})}</td>
+   ${sess?`<td><button class="btn sm del" onclick="delChem('${c.id}')">Delete</button></td>`:""}</tr>`).join(""):`<tr><td colspan="8" class="none" style="padding:1.5rem">No chemical matches your search. Try a different name or formula${sess?", or add it above":""}.</td></tr>`;
+}
+async function addChem(){
+  const n=$("#n").value.trim(),f=$("#f").value.trim();
+  if(!n||!f){toast("Enter both the chemical name and its formula.");return}
+  if(chems.some(c=>c.name.toLowerCase()===n.toLowerCase())){toast(n+" is already in the catalogue.");return}
+  try{await addDoc(collection(db,"chemicals"),{name:n,formula:f,lab:$("#l").value,qty:$("#q").value.trim(),shelf:$("#sh").value.trim(),avail:$("#a").value,haz:[...document.querySelectorAll(".hk:checked")].map(x=>x.value),date:new Date().toISOString().slice(0,10)});
+    toast(n+" added to the catalogue.");document.querySelectorAll("#n,#f,#q,#sh").forEach(x=>x.value="");document.querySelectorAll(".hk").forEach(x=>x.checked=false)}
+  catch(e){toast("Could not add the chemical. Check your connection and login.")}
+}
+async function delChem(id){const c=chems.find(x=>x.id===id);if(c&&confirm(`Delete ${c.name} from the catalogue?`)){try{await deleteDoc(doc(db,"chemicals",id));toast(c.name+" deleted.")}catch(e){toast("Could not delete. Check your login.")}}}
+async function setAv(id,v){try{await updateDoc(doc(db,"chemicals",id),{avail:v})}catch(e){toast("Could not update availability.")}}
+
+function loginPage(){
+  return `<div class="loginwrap"><form class="loginbox" onsubmit="doLogin(event)">
+  <h1>Welcome back</h1><p class="sub" style="margin:0">Sign in to add, update or delete chemicals in the catalogue.</p>
+  <label for="u">Username</label><input id="u" autocomplete="username" required>
+  <label for="p">Password</label><input id="p" type="password" autocomplete="current-password" required>
+  <div class="err" id="err" role="alert"></div>
+  <button class="btn" style="width:100%;margin-top:.4rem">Log in</button></form></div>`;
+}
+async function doLogin(e){
+  e.preventDefault();
+  if(!fbOK){$("#err").textContent="Firebase is not set up yet. See README Section 7.";return}
+  try{await signInWithEmailAndPassword(auth,toEmail($("#u").value),$("#p").value);toast("Signed in.");go("catalogue")}
+  catch(x){$("#err").textContent="Username or password is incorrect. Check both and try again."}
+}
+function logout(){signOut(auth);toast("Signed out.");go("home")}
+function teacherList(){$("#tl").innerHTML=users.length?users.map(t=>`<div class="urow"><span><b>${esc(t.name)}</b> · ${esc(t.username)}</span><button class="btn sm del" onclick="rmTeacher('${esc(t.id)}')">Remove</button></div>`).join(""):'<p class="none">No teacher logins yet.</p>'}
+function teachers(){
+  $(".menu").classList.remove("open");
+  const d=$("#dlg");
+  d.innerHTML=`<h2 style="font-size:1.4rem">Teacher logins</h2><p class="sub" style="margin:.3rem 0 1rem">Create a username and password for each teacher, then share it with them. Teachers can add and delete chemicals but cannot create logins.</p>
+  <div class="row"><div><label for="tn">Teacher name</label><input id="tn"></div><div><label for="tu">Username</label><input id="tu" autocomplete="off"></div><div><label for="tp">Password</label><input id="tp" type="text" autocomplete="off"></div></div>
+  <button class="btn" style="margin:.8rem 0" onclick="addTeacher()">Create login</button><div id="tl"></div>
+  <div style="text-align:right;margin-top:1rem"><button class="btn ghost" onclick="$('#dlg').close()">Close</button></div>`;
+  teacherList();d.showModal();
+}
+async function addTeacher(){
+  const n=$("#tn").value.trim(),u=$("#tu").value.trim(),p=$("#tp").value;
+  if(!n||!u||p.length<6){toast("Enter a name, a username and a password of at least 6 characters.");return}
+  const email=toEmail(u);if(email===ADMIN_EMAIL||!/^[a-z0-9]/.test(email)){toast("Please choose a different username.");return}
+  const sec=getApps().find(a=>a.name==="sec")||initializeApp(FIREBASE_CONFIG,"sec");
+  try{
+    let msg="Login created for "+n+".";
+    try{await createUserWithEmailAndPassword(getAuth(sec),email,p)}
+    catch(e){if(e.code==="auth/email-already-in-use")msg="Access restored for "+n+" (existing password still applies).";else throw e}
+    await signOut(getAuth(sec));
+    await setDoc(doc(db,"teachers",email),{name:n,username:u});
+    toast(msg);["#tn","#tu","#tp"].forEach(x=>$(x).value="");
+  }catch(e){toast(e.code==="auth/weak-password"?"That password is too weak.":"Could not create the login.")}
+}
+async function rmTeacher(id){try{await deleteDoc(doc(db,"teachers",id));toast("Teacher access removed.")}catch(e){toast("Could not remove the teacher.")}}
+function exportData(){
+  const b=new Blob([JSON.stringify({chems:chems.map(({id,...r})=>r)},null,1)],{type:"application/json"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="chem-catalogue-backup.json";a.click();
+}
+function importData(i){
+  const f=i.files[0];if(!f)return;const r=new FileReader();
+  r.onload=async()=>{try{const d=JSON.parse(r.result);if(!Array.isArray(d.chems))throw 0;
+    const rows=d.chems.filter(c=>c.name&&c.formula);
+    for(let k=0;k<rows.length;k+=400){const b=writeBatch(db);
+      rows.slice(k,k+400).forEach(c=>b.set(doc(collection(db,"chemicals")),{name:String(c.name),formula:String(c.formula),lab:c.lab||"B.Sc",qty:c.qty||"",shelf:c.shelf||"",avail:c.avail||"in",haz:Array.isArray(c.haz)?c.haz:[],date:c.date||new Date().toISOString().slice(0,10)}));
+      await b.commit()}
+    toast(rows.length+" chemicals imported.")}catch(e){toast("That file could not be imported.")}i.value=""};
+  r.readAsText(f);
+}
+document.addEventListener("click",e=>{if(!e.target.closest(".profile"))document.querySelector(".menu")?.classList.remove("open")});
+Object.assign(window,{$,go,addChem,delChem,setAv,renderList,doLogin,logout,teachers,addTeacher,rmTeacher,exportData,importData});
+render();
+</script>
+</body>
+</html>
