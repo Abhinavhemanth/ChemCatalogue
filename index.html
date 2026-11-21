@@ -175,6 +175,7 @@ function renderAuth(){
   <div class="menu"><small>Signed in as <b>${esc(sess.user)}</b><br>${sess.admin?"Administrator (HOD)":"Teacher"}</small>
   ${sess.admin?`<button onclick="teachers()">👤 Manage teacher logins</button>`:""}
   <button onclick="exportData()">⬇ Export catalogue (backup)</button>
+  <button onclick="exportExcel()">⬇ Export as Excel (.xlsx)</button>
   <button onclick="document.getElementById('imp').click()">⬆ Import catalogue</button>
   <button onclick="logout()">Sign out</button></div>
   <input type="file" id="imp" accept=".json" hidden onchange="importData(this)"></div>`;
@@ -313,6 +314,34 @@ function exportData(){
   const b=new Blob([JSON.stringify({chems:chems.map(({id,...r})=>r)},null,1)],{type:"application/json"});
   const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="chem-catalogue-backup.json";a.click();
 }
+  function loadXLSX(){
+  return new Promise((ok,fail)=>{
+    if(window.XLSX)return ok();
+    const s=document.createElement("script");
+    s.src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js";
+    s.onload=ok;s.onerror=fail;document.head.appendChild(s);
+  });
+}
+async function exportExcel(){
+  try{
+    await loadXLSX();
+    const rows=[...chems].sort((a,b)=>a.name.localeCompare(b.name)).map(c=>({
+      "Chemical":c.name,
+      "Formula":c.formula,
+      "Lab":c.lab,
+      "Shelf no.":c.shelf||"",
+      "Hazards":(c.haz||[]).map(h=>HAZ[h]?HAZ[h].n:h).join(", "),
+      "Availability":AV[c.avail]?AV[c.avail][0]:c.avail,
+      "Quantity":c.qty||"",
+      "Date added":c.date||""
+    }));
+    const ws=XLSX.utils.json_to_sheet(rows);
+    ws["!cols"]=[{wch:28},{wch:18},{wch:14},{wch:10},{wch:36},{wch:14},{wch:12},{wch:12}];
+    const wb=XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb,ws,"Catalogue");
+    XLSX.writeFile(wb,"chem-catalogue.xlsx");
+  }catch(e){toast("Could not create the Excel file. Check your internet connection.")}
+}
 function importData(i){
   const f=i.files[0];if(!f)return;const r=new FileReader();
   r.onload=async()=>{try{const d=JSON.parse(r.result);if(!Array.isArray(d.chems))throw 0;
@@ -324,7 +353,7 @@ function importData(i){
   r.readAsText(f);
 }
 document.addEventListener("click",e=>{if(!e.target.closest(".profile"))document.querySelector(".menu")?.classList.remove("open")});
-Object.assign(window,{$,go,addChem,delChem,setAv,renderList,doLogin,logout,teachers,addTeacher,rmTeacher,exportData,importData});
+Object.assign(window,{$,go,addChem,delChem,setAv,renderList,doLogin,logout,teachers,addTeacher,rmTeacher,exportData,importData,exportExcel});
 render();
 </script>
 </body>
