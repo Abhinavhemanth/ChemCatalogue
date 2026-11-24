@@ -134,11 +134,11 @@ const HAZ = {
   env:{i:"🐟",n:"Environmental hazard",d:"Harmful to aquatic life. Never pour down the drain; use the labelled waste bottle."}
 };
 const SOPS = [
- ["Concentrated acids (HCl, H₂SO₄, HNO₃)",["Wear splash goggles, nitrile gloves, lab coat and apron; work in a fume hood.","Always add acid to water, slowly. Never add water to acid.","Carry bottles with both hands or in a bottle carrier.","Spill: neutralise with sodium bicarbonate, wipe, rinse. Skin or eye contact: flush with running water for 15 minutes and call the faculty-in-charge."]],
- ["Strong bases (NaOH, KOH, NH₄OH)",["Dissolving NaOH gives off heat. Add pellets slowly to water and stir.","Keep ammonia solutions in the hood; the vapour irritates the lungs.","Spill: dilute with water, neutralise with dilute acetic acid, mop up."]],
- ["Flammable solvents (acetone, ethanol, benzene, ether)",["No flames, hot plates or sparks nearby. Use a water bath or heating mantle.","Keep containers closed and quantities small. Store in a ventilated flammables cabinet.","Fire: use a CO₂ or dry-powder extinguisher, not water. Benzene is a carcinogen: use only in a hood and only when no substitute exists."]],
+ ["Concentrated Acids (HCl, H₂SO₄, HNO₃)",["Wear splash goggles, nitrile gloves, lab coat and apron; work in a fume hood.","Always add acid to water, slowly. Never add water to acid.","Carry bottles with both hands or in a bottle carrier.","Spill: neutralise with sodium bicarbonate, wipe, rinse. Skin or eye contact: flush with running water for 15 minutes and call the faculty-in-charge."]],
+ ["Strong Bases (NaOH, KOH, NH₄OH)",["Dissolving NaOH gives off heat. Add pellets slowly to water and stir.","Keep ammonia solutions in the hood; the vapour irritates the lungs.","Spill: dilute with water, neutralise with dilute acetic acid, mop up."]],
+ ["Flammable Solvents (acetone, ethanol, benzene, ether)",["No flames, hot plates or sparks nearby. Use a water bath or heating mantle.","Keep containers closed and quantities small. Store in a ventilated flammables cabinet.","Fire: use a CO₂ or dry-powder extinguisher, not water. Benzene is a carcinogen: use only in a hood and only when no substitute exists."]],
  ["Oxidisers (KMnO₄, K₂Cr₂O₇, HNO₃)",["Store separately from organic chemicals, acids and reducing agents.","Never grind oxidisers with organic material or sulphur.","Chromium(VI) is carcinogenic. Collect all residues in the labelled heavy-metal waste bottle."]],
- ["Toxic and heavy-metal compounds (Hg, Pb, Ba, As, Cd, cyanides)",["Handle with gloves in a hood. Never pipette by mouth.","Mercury spills: do not sweep. Use a mercury spill kit and report immediately.","Never mix cyanides with acid. Wash hands thoroughly after use.","Log every use in the register. Dispose only through the approved waste route."]]
+ ["Toxic and Heavy-Metal compounds (Hg, Pb, Ba, As, Cd, cyanides)",["Handle with gloves in a hood. Never pipette by mouth.","Mercury spills: do not sweep. Use a mercury spill kit and report immediately.","Never mix cyanides with acid. Wash hands thoroughly after use.","Log every use in the register. Dispose only through the approved waste route."]]
 ];
 
 const $=s=>document.querySelector(s);
@@ -211,7 +211,7 @@ function home(){
   <section class="band" id="sops"><div class="wrap"><h2>Standard operating procedures</h2>
   <p class="sub">Read the relevant procedure before you open a bottle. If you are unsure, ask the faculty-in-charge first.</p>
   ${SOPS.map(s=>`<details class="sop"><summary>${s[0]}</summary><div><ul>${s[1].map(x=>`<li>${x}</li>`).join("")}</ul></div></details>`).join("")}
-  <p style="margin-top:1rem"><b>Always:</b> goggles and lab coat on, long hair tied back, no food or drink, know where the eyewash, shower and extinguisher are.</p></div></section>
+  <p style="margin-top:1rem"><b>Always:</b> Goggles and lab coat on, long hair tied back, no food or drink, know where the eyewash, shower and extinguisher are.</p></div></section>
 
   <section><div class="wrap"><h2>Hazard symbols and what they mean</h2>
   <p class="sub">These are the GHS pictograms printed on reagent labels and shown beside chemicals in the catalogue.</p>
